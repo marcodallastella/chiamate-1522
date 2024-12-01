@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #cdc9c9;
+}
+
+.map-container {
+  position: relative;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px 25px;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+  z-index: 1000;
+}
+
+.info-panel h3 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.info-panel p {
+  margin: 10px 0 0 0;
+  font-size: 1.4em;
+  color: #666;
+  text-align: center;
+}
+
+svg {
+  background-color: #cdc9c9;
+  border-radius: 15px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+  margin: 0 auto;
+}
+
+.italy-map path {
+  transition: all 0.3s ease;
+}
+
+.italy-map path:hover {
+  fill: #696969;
+  cursor: pointer;
+}
+
+/* Import a nice font, for example Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.info-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(164, 160, 160, 0.95);
+    padding: 25px 30px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.info-panel h3 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;  /* Bold for the year */
+    color: #333;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.info-panel h3 br {
+    margin-bottom: 5px;
+}
+
+.info-panel h3 + p {  /* The month text */
+    font-size: 2em;
+    font-weight: 300;  /* Light weight for the month */
+    margin: 5px 0;
+    color: #444;
+}
+
+.info-panel p:last-child {  /* The number */
+    margin: 15px 0 0 0;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #c41e3a;  /* A nice red for the number */
+    text-align: center;
+}
+
+/* Add 'chiamate' label */
+.info-panel p:last-child::after {
+    content: ' chiamate';
+    font-size: 0.6em;
+    font-weight: 300;
+    color: #666;
+}
