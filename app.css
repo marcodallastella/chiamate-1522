@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #cdc9c9;
+  background-color: #06020e;
 }
 
 .map-container {
@@ -39,12 +39,12 @@ body {
 .info-panel p {
   margin: 10px 0 0 0;
   font-size: 1.4em;
-  color: #666;
+  color: #2dd05e;
   text-align: center;
 }
 
 svg {
-  background-color: #cdc9c9;
+  background-color: #06020e;
   border-radius: 15px;
   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   margin: 0 auto;
@@ -54,32 +54,50 @@ svg {
   transition: all 0.3s ease;
 }
 
-.italy-map path:hover {
+/* .italy-map path:hover {
   fill: #696969;
   cursor: pointer;
-}
+} */
 
-/* Import a nice font, for example Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 .info-panel {
     position: absolute;
     top: 20px;
     left: 20px;
-    background-color: rgba(164, 160, 160, 0.95);
+    background-color: #06020e;
+    opacity: 0.6;
     padding: 25px 30px;
     /* border-radius: 10px; */
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
     z-index: 1000;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 200px;
 }
+
+.info-panel .year {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #c0bfc1;
+  line-height: 1.2;
+}
+
+
+.info-panel .month {
+  font-size: 2em;
+  font-weight: 300;  /* lighter weight for month */
+  color: #a0a0a0;    /* slightly different color */
+  margin-top: 5px;
+}
+
 
 .info-panel h3 {
     margin: 0;
     font-size: 2.5em;
     font-weight: 700;  /* Bold for the year */
-    color: #333;
-    line-height: 1.2;
+    color: #c0bfc1;
+    line-height: 1.4;
     text-align: center;
 }
 
@@ -96,7 +114,7 @@ svg {
 
 .info-panel p:last-child {  /* The number */
     margin: 15px 0 0 0;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 500;
     color: #c41e3a;  /* A nice red for the number */
     text-align: center;
@@ -108,4 +126,23 @@ svg {
     font-size: 0.6em;
     font-weight: 300;
     color: #666;
+}
+
+.caption {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #97919e;
+  background-color: rgba(62, 63, 66, 0.3);
+  padding: 5px 15px;
+  /* border-radius: 1px; */
+}
+
+.caption .source {
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: #a0a0a0;
 }

@@ -1,3 +1,7 @@
+const baseUrl = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? ''
+    : '/chiamate-1522';
+
 function CallsMap() {
     // Animation timing configuration (all values in milliseconds)
     const ANIMATION_CONFIG = {
@@ -32,7 +36,7 @@ function CallsMap() {
         WEEKS_TO_KEEP: 3
     };
 
-    const startYear = 2013;
+    const startYear = 2023;
     const svgRef = React.useRef(null);
     const [currentData, setCurrentData] = React.useState([]);
     const [currentWeek, setCurrentWeek] = React.useState(0);
@@ -92,9 +96,9 @@ function CallsMap() {
             .enter()
             .append('path')
             .attr('d', path)
-            .attr('fill', '#808080')
+            .attr('fill', '#333333')
             .attr('stroke', '#696969')
-            .attr('stroke-width', '0.5');
+            .attr('stroke-width', '0.3');
 
         // Create a single group for dots that we'll reuse
         svg.append('g')
@@ -106,8 +110,8 @@ function CallsMap() {
     // Load data
     React.useEffect(() => {
         Promise.all([
-            d3.csv('/data/calls_latlon.csv'),
-            d3.json('/data/italy.json')
+            d3.csv(`${baseUrl}/data/calls_latlon.csv`),
+            d3.json(`${baseUrl}/data/italy.json`)
         ]).then(([callsData, geoData]) => {
             setItalyGeoData(geoData);
 
@@ -176,15 +180,17 @@ function CallsMap() {
     return (
         <div className="map-container">
             <div className="info-panel">
-                <h3>
-                    {currentData[currentWeek] ? (
-                        <React.Fragment>
-                            {formatDate(currentData[currentWeek][0]).split(' ')[0]}<br />
+                {currentData[currentWeek] ? (
+                    <React.Fragment>
+                        <div className="year">
+                            {formatDate(currentData[currentWeek][0]).split(' ')[0]}
+                        </div>
+                        <div className="month">
                             {formatDate(currentData[currentWeek][0]).split(' ')[1]}
-                        </React.Fragment>
-                    ) : ''}
-                </h3>
-                <p> {
+                        </div>
+                    </React.Fragment>
+                ) : ''}
+                <p className="calls-count"> {
                     currentData[currentWeek] && currentData[currentWeek][1]
                         ? currentData[currentWeek][1].reduce((sum, d) => sum + Number(d.calls), 0)
                         : 0
@@ -192,6 +198,10 @@ function CallsMap() {
             </div>
             <svg ref={svgRef} width={1200} height={800}>
             </svg>
+            <div className="caption">
+                Weekly calls from victims to 1522, number against gender-based violence and stalking.
+                <div className="source">Data source: <a href="https://www.istat.it/notizia/il-numero-di-pubblica-utilita-1522-anni-2013-2024/">ISTAT</a></div>
+            </div>
         </div>
     );
 }
