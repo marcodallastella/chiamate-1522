@@ -2,6 +2,7 @@ const baseUrl = location.hostname === "localhost" || location.hostname === "127.
     ? ''
     : '/chiamate-1522';
 
+
 function CallsMap() {
     // Animation timing configuration (all values in milliseconds)
     const ANIMATION_CONFIG = {
@@ -110,8 +111,8 @@ function CallsMap() {
     // Load data
     React.useEffect(() => {
         Promise.all([
-            d3.csv(`${baseUrl}/data/calls_latlon.csv`),
-            d3.json(`${baseUrl}/data/italy.json`)
+            d3.csv(`${baseUrl}/data/calls_latlon.csv`),  // This path needs to exist in your repo
+            d3.json(`${baseUrl}/data/italy.json`)        // This path needs to exist in your repo
         ]).then(([callsData, geoData]) => {
             setItalyGeoData(geoData);
 
