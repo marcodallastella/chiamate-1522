@@ -216,7 +216,7 @@ function CallsMap() {
             </svg>
             <div className="caption">
                 Weekly calls from victims to 1522, number against gender-based violence and stalking.
-                <div className="source">Data source: <a href="https://www.istat.it/notizia/il-numero-di-pubblica-utilita-1522-anni-2013-2024/">ISTAT</a></div>
+                <div className="source">Visit the <a href="https://github.com/marcodallastella/chiamate-1522">GitHub repository</a></div>
             </div>
         </div>
     );
