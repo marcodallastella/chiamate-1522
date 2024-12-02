@@ -1,148 +1,198 @@
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background-color: #06020e;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
 }
 
 .map-container {
   position: relative;
-  margin: 20px auto;
+  width: 100%;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .info-panel {
   position: absolute;
   top: 20px;
   left: 20px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(6, 2, 14, 0.8);
   padding: 20px 25px;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
+  color: #c0bfc1;
+  width: auto;
+  max-width: 400px;
 }
 
-.info-panel h3 {
-  margin: 0;
-  font-size: 2em;
-  font-weight: 500;
-  color: #333;
+.info-panel .year {
+  font-size: 2.5em;
+  font-weight: 700;
   line-height: 1.2;
-  text-align: center;
 }
 
-.info-panel p {
-  margin: 10px 0 0 0;
+.info-panel .month {
+  font-size: 2em;
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.info-panel .calls-count {
+  margin: 15px 0 0 0;
   font-size: 1.4em;
-  color: #2dd05e;
-  text-align: center;
+  font-weight: 500;
+  color: #c41e3a;
+}
+
+.info-panel .calls-count::after {
+  content: ' chiamate';
+  font-size: 0.6em;
+  font-weight: 300;
+  color: #a0a0a0;
 }
 
 svg {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 40px);
   background-color: #06020e;
   border-radius: 15px;
-  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
-  margin: 0 auto;
 }
 
 .italy-map path {
   transition: all 0.3s ease;
 }
 
-/* .italy-map path:hover {
-  fill: #696969;
-  cursor: pointer;
-} */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-.info-panel {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #06020e;
-    opacity: 0.6;
-    padding: 25px 30px;
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
-    z-index: 1000;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    width: 200px;
-}
-
-.info-panel .year {
-  font-size: 2.5em;
-  font-weight: 700;
-  color: #c0bfc1;
-  line-height: 1.2;
-}
-
-
-.info-panel .month {
-  font-size: 2em;
-  font-weight: 300;  /* lighter weight for month */
-  color: #a0a0a0;    /* slightly different color */
-  margin-top: 5px;
-}
-
-
-.info-panel h3 {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: 700;  /* Bold for the year */
-    color: #c0bfc1;
-    line-height: 1.4;
-    text-align: center;
-}
-
-.info-panel h3 br {
-    margin-bottom: 5px;
-}
-
-.info-panel h3 + p {  /* The month text */
-    font-size: 2em;
-    font-weight: 300;  /* Light weight for the month */
-    margin: 5px 0;
-    color: #444;
-}
-
-.info-panel p:last-child {  /* The number */
-    margin: 15px 0 0 0;
-    font-size: 1.4em;
-    font-weight: 500;
-    color: #c41e3a;  /* A nice red for the number */
-    text-align: center;
-}
-
-/* Add 'chiamate' label */
-.info-panel p:last-child::after {
-    content: ' chiamate';
-    font-size: 0.6em;
-    font-weight: 300;
-    color: #666;
-}
-
 .caption {
   position: absolute;
-  bottom: 5px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  width: calc(100% - 40px);
   text-align: center;
   font-family: 'Roboto', sans-serif;
   color: #97919e;
   background-color: rgba(62, 63, 66, 0.3);
   padding: 5px 15px;
-  /* border-radius: 1px; */
+  border-radius: 1px;
 }
 
 .caption .source {
   font-size: 0.8em;
   margin-top: 5px;
   color: #a0a0a0;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 100vh;
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  .info-panel {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(100% - 30px);
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    font-size: 14px;
+    align-self: center;
+  }
+
+  .info-panel .year {
+    font-size: 1.8em;
+  }
+
+  .info-panel .month {
+    font-size: 1.3em;
+  }
+
+  .info-panel .calls-count {
+    font-size: 1.1em;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    max-height: calc(100vh - 220px);
+    margin: 10px 0;
+  }
+
+  .caption {
+    position: relative;
+    bottom: 0;
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .info-panel {
+    position: static; /* Remove absolute positioning */
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  svg {
+    width: 100%;
+    flex: 1;
+    min-height: 60vh; /* Ensure the map takes up significant space */
+    height: auto;
+  }
+
+  .caption {
+    position: static; /* Remove absolute positioning */
+    transform: none;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-panel {
+    padding: 15px;
+  }
+
+  .info-panel .year {
+    font-size: 1.8em;
+  }
+
+  .info-panel .month {
+    font-size: 1.4em;
+  }
+
+  .caption {
+    font-size: 0.8em;
+    padding: 10px;
+  }
 }

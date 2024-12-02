@@ -3,47 +3,55 @@ const baseUrl = location.hostname === "localhost" || location.hostname === "127.
     : '/chiamate-1522';
 
 function CallsMap() {
-    // Animation timing configuration (all values in milliseconds)
+    const svgRef = React.useRef(null);
+    const [svgWidth, setSvgWidth] = React.useState(1200);
+    const [svgHeight, setSvgHeight] = React.useState(800);
+
+    React.useEffect(() => {
+        const updateDimensions = () => {
+            if (svgRef.current) {
+                const container = svgRef.current.parentElement;
+                setSvgWidth(container.clientWidth);
+                setSvgHeight(container.clientHeight);
+            }
+        };
+
+        updateDimensions();
+        window.addEventListener('resize', updateDimensions);
+        return () => window.removeEventListener('resize', updateDimensions);
+    }, []);
+
     const ANIMATION_CONFIG = {
-        // Time for dots to appear and grow to full size
         GROW_DURATION: 1500,
-
-        // Time dots stay visible at full opacity
         VISIBLE_DURATION: 20,
-
-        // Time for dots to fade out
         FADE_DURATION: 800,
-
-        // Interval between new weeks of data
-        // Should be less than total animation duration for overlap
-        // (GROW + VISIBLE + FADE = 2800ms total)
         WEEK_INTERVAL: 800,
-
-        // Visual settings
         DOT_OPACITY: {
-            INITIAL: 0.5,   // Starting opacity of dots
-            PEAK: 0.8,      // Maximum opacity when fully visible
-            END: 0          // Final opacity (0 for complete fade)
+            INITIAL: 0.5,
+            PEAK: 0.8,
+            END: 0
         },
-
         DOT_SIZE: {
-            MIN: 4,         // Minimum dot radius
-            MAX: 18         // Maximum dot radius
+            MIN: 4,
+            MAX: 18
         },
-
-        // How many previous week groups to keep before removal
-        // Higher number = more potential overlap but more DOM elements
         WEEKS_TO_KEEP: 3
     };
 
     const startYear = 2023;
-    const svgRef = React.useRef(null);
     const [currentData, setCurrentData] = React.useState([]);
     const [currentWeek, setCurrentWeek] = React.useState(0);
     const [italyGeoData, setItalyGeoData] = React.useState(null);
     const animationRef = React.useRef(null);
     const mapInitialized = React.useRef(false);
 
+    const getProjection = React.useCallback((width, height) => {
+        const scale = Math.min(width, height) * 3.5;
+        return d3.geoMercator()
+            .center([12.5, 42])
+            .scale(scale)
+            .translate([width / 2, height / 2]);
+    }, []);
     const italianMonths = {
         '01': 'Gennaio', '02': 'Febbraio', '03': 'Marzo',
         '04': 'Aprile', '05': 'Maggio', '06': 'Giugno',
@@ -67,7 +75,6 @@ function CallsMap() {
             setCurrentWeek(prev => {
                 if (prev >= currentData.length - 1) {
                     clearInterval(animationRef.current);
-                    // Don't reset to 0, just stay at the last week
                     return prev;
                 }
                 return prev + 1;
@@ -75,37 +82,44 @@ function CallsMap() {
         }, ANIMATION_CONFIG.WEEK_INTERVAL);
     }, [currentData.length]);
 
-    // Initialize map only once
+    // Initialize map 
     React.useEffect(() => {
         if (!italyGeoData || !svgRef.current || mapInitialized.current) return;
+    
+        const svg = d3.select(svgRef.current);
+        
+        // Create map group first (so it's behind)
+        svg.append('g')
+            .attr('class', 'italy-map');
+            
+        // Create dots group second (so it's on top)
+        svg.append('g')
+            .attr('class', 'dots-container');
+    
+        mapInitialized.current = true;
+    }, [italyGeoData]);
+
+    // Map updates
+    React.useEffect(() => {
+        if (!italyGeoData || !svgRef.current || !mapInitialized.current) return;
 
         const svg = d3.select(svgRef.current);
-        const width = 1200;
-        const height = 800;
+        const width = svgRef.current.clientWidth;
+        const height = svgRef.current.clientHeight;
 
-        const projection = d3.geoMercator()
-            .fitSize([width, height], italyGeoData);
-
+        const projection = getProjection(width, height);
         const path = d3.geoPath().projection(projection);
 
-        // Draw Italy map once
-        svg.append('g')
-            .attr('class', 'italy-map')
+        svg.select('.italy-map')
             .selectAll('path')
             .data(italyGeoData.features)
-            .enter()
-            .append('path')
+            .join('path')
             .attr('d', path)
             .attr('fill', '#333333')
             .attr('stroke', '#696969')
             .attr('stroke-width', '0.3');
 
-        // Create a single group for dots that we'll reuse
-        svg.append('g')
-            .attr('class', 'dots-container');
-
-        mapInitialized.current = true;
-    }, [italyGeoData]);
+    }, [italyGeoData, svgWidth, svgHeight, getProjection]);
 
     // Load data
     React.useEffect(() => {
@@ -123,6 +137,10 @@ function CallsMap() {
             const groupedData = d3.group(filteredData, d => d.date);
             setCurrentData(Array.from(groupedData));
             startAnimation();
+        }).catch(error => {
+            console.error("Error loading data:", error);
+            console.log("Current baseUrl:", baseUrl);
+            console.log("Current hostname:", location.hostname);
         });
     }, [startAnimation]);
 
@@ -131,8 +149,10 @@ function CallsMap() {
         if (!currentData.length || !italyGeoData || !mapInitialized.current) return;
 
         const svg = d3.select(svgRef.current);
-        const projection = d3.geoMercator()
-            .fitSize([1200, 800], italyGeoData);
+        const width = svgRef.current.clientWidth;
+        const height = svgRef.current.clientHeight;
+
+        const projection = getProjection(width, height);
 
         const weekData = currentData[currentWeek] && currentData[currentWeek][1] ? currentData[currentWeek][1] : [];
 
@@ -140,12 +160,10 @@ function CallsMap() {
             .domain([0, d3.max(weekData, d => +d.calls)])
             .range([ANIMATION_CONFIG.DOT_SIZE.MIN, ANIMATION_CONFIG.DOT_SIZE.MAX]);
 
-        // Add a unique identifier for each week's dots
         const weekGroup = svg.select('.dots-container')
             .append('g')
             .attr('class', `week-${currentWeek}`);
 
-        // Add new dots for this week
         weekGroup.selectAll('circle')
             .data(weekData)
             .enter()
@@ -154,7 +172,6 @@ function CallsMap() {
             .attr('cy', d => projection([+d.longitude, +d.latitude])[1])
             .attr('r', 0)
             .attr('fill', `rgba(223, 32, 32, ${ANIMATION_CONFIG.DOT_OPACITY.INITIAL})`)
-
             .transition()
             .duration(ANIMATION_CONFIG.GROW_DURATION)
             .style('opacity', ANIMATION_CONFIG.DOT_OPACITY.PEAK)
@@ -170,12 +187,11 @@ function CallsMap() {
                 weekGroup.remove();
             });
 
-        // Only remove groups that are definitely done
         const oldWeek = currentWeek - ANIMATION_CONFIG.WEEKS_TO_KEEP;
         if (oldWeek >= 0) {
             svg.select(`.week-${oldWeek}`).remove();
         }
-    }, [currentData, currentWeek, italyGeoData]);
+    }, [currentData, currentWeek, italyGeoData, getProjection]);
 
     return (
         <div className="map-container">
@@ -196,7 +212,7 @@ function CallsMap() {
                         : 0
                 }</p>
             </div>
-            <svg ref={svgRef} width={1200} height={800}>
+            <svg ref={svgRef} width={svgWidth} height={svgHeight}>
             </svg>
             <div className="caption">
                 Weekly calls from victims to 1522, number against gender-based violence and stalking.
@@ -206,6 +222,5 @@ function CallsMap() {
     );
 }
 
-// Render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CallsMap />);
