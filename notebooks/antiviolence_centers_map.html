@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8aa8c69a15f3c962d6180ca75695cce4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8aa8c69a15f3c962d6180ca75695cce4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8aa8c69a15f3c962d6180ca75695cce4 = L.map(
+                "map_8aa8c69a15f3c962d6180ca75695cce4",
+                {
+                    center: [42.504154, 12.646361],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f2412dfc11652b704c63bf61af02d8e4 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var marker_340b578e4de0cadaa1a9f20cbf418eab = L.marker(
+                [42.6577291023153, 13.700629168369742],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_75f0f1e32777ab1c3a6eb56055b74c35 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_340b578e4de0cadaa1a9f20cbf418eab.setIcon(icon_75f0f1e32777ab1c3a6eb56055b74c35);
+        
+    
+        var popup_83d19610e102dcada8097c2b46d4d2ff = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c201d498c7d3e2ac8c8485fbedf2f1a9 = $(`<div id="html_c201d498c7d3e2ac8c8485fbedf2f1a9" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza La Fenice</b><br>     Via Trento e Trieste, 8<br>     Teramo, Martinsicuro, Pineto, Isola del Gran Sasso, Teramo<br>     Tel: 0861029009; 800174207<br>     Orari: Lunedì: chiuso; Martedì: 11:00-13:00; Mercoledì: 15:30-18:30; Giovedì: 15:00-18:00; Venerdì: 16:00-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_83d19610e102dcada8097c2b46d4d2ff.setContent(html_c201d498c7d3e2ac8c8485fbedf2f1a9);
+            
+        
+
+        marker_340b578e4de0cadaa1a9f20cbf418eab.bindPopup(popup_83d19610e102dcada8097c2b46d4d2ff)
+        ;
+
+        
+    
+    
+            var marker_8e4f36ce98e3c3212a4090cbf75bdbf1 = L.marker(
+                [40.63160046324781, 15.79934870628883],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_9be45fbe5f95f9e26469f9d3a46b49f4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8e4f36ce98e3c3212a4090cbf75bdbf1.setIcon(icon_9be45fbe5f95f9e26469f9d3a46b49f4);
+        
+    
+        var popup_9112c518d3c0663f0b959cde77dbbef1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a282196ea8f2ed7042dcc19fa043bd6d = $(`<div id="html_a282196ea8f2ed7042dcc19fa043bd6d" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Telefono Donna</b><br>     Via dei Ligustri,32<br>     Potenza, Potenza<br>     Tel: 097155551; 360437962<br>     Orari: Lunedì: 09:00-14:00/16:00-19:00; Martedì: 09:00-14:00/16:00-19:00; Mercoledì: 09:00-14:00/16:00-19:00; Giovedì: 09:00-14:00/16:00-19:00; Venerdì: 09:00-14:00/16:00-19:00; Sabato: 09:00-14:00; Domenica: chiuso<br>     </div>`)[0];
+                popup_9112c518d3c0663f0b959cde77dbbef1.setContent(html_a282196ea8f2ed7042dcc19fa043bd6d);
+            
+        
+
+        marker_8e4f36ce98e3c3212a4090cbf75bdbf1.bindPopup(popup_9112c518d3c0663f0b959cde77dbbef1)
+        ;
+
+        
+    
+    
+            var marker_f1965e3066875ac563b454ac7bf9fc06 = L.marker(
+                [44.0618998, 12.4481194],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_fa5e9cfb5e7f407c4ebe1b5c8295d875 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f1965e3066875ac563b454ac7bf9fc06.setIcon(icon_fa5e9cfb5e7f407c4ebe1b5c8295d875);
+        
+    
+        var popup_4b701ac27f84cd28613f6f3d8053de47 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a9d2da901f402541a252eb1c27a9a0ea = $(`<div id="html_a9d2da901f402541a252eb1c27a9a0ea" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Marielle</b><br>     Via Dante di Nanni 1 /d<br>     Santarcangelo, Rimini<br>     Tel: 3465016665<br>     Orari: Lunedì: 09:00-12:00/15:00-19:00; Martedì: 09:00-12:00/15:00-19:00; Mercoledì: 09:00-12:00/15:00-19:00; Giovedì: 09:00-12:00/15:00-19:00; Venerdì: 09:00-12:00/15:00-19:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_4b701ac27f84cd28613f6f3d8053de47.setContent(html_a9d2da901f402541a252eb1c27a9a0ea);
+            
+        
+
+        marker_f1965e3066875ac563b454ac7bf9fc06.bindPopup(popup_4b701ac27f84cd28613f6f3d8053de47)
+        ;
+
+        
+    
+    
+            var marker_3b0e3c459585ccb9e90bb963f48b241e = L.marker(
+                [46.0666141, 13.2437927],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_df9310dc35ffe19482b73a43795bd4f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3b0e3c459585ccb9e90bb963f48b241e.setIcon(icon_df9310dc35ffe19482b73a43795bd4f7);
+        
+    
+        var popup_2bfe5c86a35b291bbb07c4164dcbd31f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2f678294ece1744173254443a039027d = $(`<div id="html_2f678294ece1744173254443a039027d" style="width: 100.0%; height: 100.0%;">     <b>Zero tolerance contro la violenza sulle donne</b><br>     Via San Valentino, 20<br>     Udine, Udine<br>     Tel: 800531135; 04321272077; 3804699483<br>     Orari: Lunedì: 08:30-16:00; Martedì: 08:30-16:00; Mercoledì: 08:30-16:00; Giovedì: 08:30-16:00; Venerdì: 08:30-16:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_2bfe5c86a35b291bbb07c4164dcbd31f.setContent(html_2f678294ece1744173254443a039027d);
+            
+        
+
+        marker_3b0e3c459585ccb9e90bb963f48b241e.bindPopup(popup_2bfe5c86a35b291bbb07c4164dcbd31f)
+        ;
+
+        
+    
+    
+            var marker_ac8d1115f8c754aad16c4dbba7082e56 = L.marker(
+                [42.42058694831737, 12.105363428337698],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_1cef8a5933d907517d88653d6cbed0d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ac8d1115f8c754aad16c4dbba7082e56.setIcon(icon_1cef8a5933d907517d88653d6cbed0d9);
+        
+    
+        var popup_9286c2b57cda564888561da3cb700c38 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1593dea78b11b77082f29236e8c1eb54 = $(`<div id="html_1593dea78b11b77082f29236e8c1eb54" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Penelope</b><br>     Via della Pettinara, 4<br>     Viterbo, Viterbo<br>     Tel: 07611563229; 3926473807<br>     Orari: Lunedì: 15:00-19:00; Martedì: 09:00-13:00; Mercoledì: 15:00-19:00; Giovedì: 09:00-13:00; Venerdì: 15:00-19:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_9286c2b57cda564888561da3cb700c38.setContent(html_1593dea78b11b77082f29236e8c1eb54);
+            
+        
+
+        marker_ac8d1115f8c754aad16c4dbba7082e56.bindPopup(popup_9286c2b57cda564888561da3cb700c38)
+        ;
+
+        
+    
+    
+            var marker_43340ddec7577f5589363db6627f8036 = L.marker(
+                [44.3097204, 8.4760687],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_1bc244eb8360a762f94f347c5a077ef4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_43340ddec7577f5589363db6627f8036.setIcon(icon_1bc244eb8360a762f94f347c5a077ef4);
+        
+    
+        var popup_0b22edb5faede609095f9a80fd5d035a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a47dce44ca551de95a29219274ed4c04 = $(`<div id="html_a47dce44ca551de95a29219274ed4c04" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Telefono Donna</b><br>     Via Sormano, 12<br>     Savona, Savona<br>     Tel: 0198313399; 3276228267<br>     Orari: Lunedì: 09:30-12:30/15:30-18:00; Martedì: 09:30-12:30/15:30-18:00; Mercoledì: 09:30-12:30/15:30-18:00; Giovedì: 09:30-12:30/15:30-18:00; Venerdì: 09:30-12:30/15:30-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_0b22edb5faede609095f9a80fd5d035a.setContent(html_a47dce44ca551de95a29219274ed4c04);
+            
+        
+
+        marker_43340ddec7577f5589363db6627f8036.bindPopup(popup_0b22edb5faede609095f9a80fd5d035a)
+        ;
+
+        
+    
+    
+            var marker_b243155c4916ab0e49d2ad47ec9a9aa6 = L.marker(
+                [41.58797955, 14.22584503945454],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_e3efceec4ee4865064f35fb04c6d3f38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b243155c4916ab0e49d2ad47ec9a9aa6.setIcon(icon_e3efceec4ee4865064f35fb04c6d3f38);
+        
+    
+        var popup_8b466ce91fdc0d3303e0bb7027761307 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d49ba0bd0841f23cf4f14c6286a23f95 = $(`<div id="html_d49ba0bd0841f23cf4f14c6286a23f95" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza BeFree Molise di Isernia</b><br>     Piazza Marconi, 1<br>     Isernia, Isernia<br>     Tel: 3894451838<br>     Orari: Lunedì: 09:00-11:00; Martedì: 10:00-13:00; Mercoledì: 10:00-13:00; Giovedì: 15:00-17:00; Venerdì: 09:00-12:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_8b466ce91fdc0d3303e0bb7027761307.setContent(html_d49ba0bd0841f23cf4f14c6286a23f95);
+            
+        
+
+        marker_b243155c4916ab0e49d2ad47ec9a9aa6.bindPopup(popup_8b466ce91fdc0d3303e0bb7027761307)
+        ;
+
+        
+    
+    
+            var marker_071437f43795a443cf1dac305a883e59 = L.marker(
+                [45.323791, 8.4209986],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_7ac36693ee817ccd65e8f35bc6b7b16c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_071437f43795a443cf1dac305a883e59.setIcon(icon_7ac36693ee817ccd65e8f35bc6b7b16c);
+        
+    
+        var popup_77f3a086745a2078d260bc861b8a8948 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_157be999505c5c5e34408b85953c763a = $(`<div id="html_157be999505c5c5e34408b85953c763a" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Vercellese EOS</b><br>     Via Fratelli Garrone,12<br>     Vercelli, Vercelli<br>     Tel: 3343113955<br>     Orari: Lunedì: 10:00-14:00; Martedì: 12:00-16:00; Mercoledì: 10:00-14:00; Giovedì: 12:00-16:00; Venerdì: 10:00-14:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_77f3a086745a2078d260bc861b8a8948.setContent(html_157be999505c5c5e34408b85953c763a);
+            
+        
+
+        marker_071437f43795a443cf1dac305a883e59.bindPopup(popup_77f3a086745a2078d260bc861b8a8948)
+        ;
+
+        
+    
+    
+            var marker_5010440f08cd61807e5f014bd6727fe1 = L.marker(
+                [43.3153415, 11.3407951],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_ed7f09a00ad6e34d4bad3ce82c132f81 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5010440f08cd61807e5f014bd6727fe1.setIcon(icon_ed7f09a00ad6e34d4bad3ce82c132f81);
+        
+    
+        var popup_0eedea13ef207d3c4d1f7019afc49772 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_52a52b09e9de3b231fbe83a9215bf3e4 = $(`<div id="html_52a52b09e9de3b231fbe83a9215bf3e4" style="width: 100.0%; height: 100.0%;">     <b>Associazione Donna chiama Donna</b><br>     Via Roma, 75<br>     Siena, Siena<br>     Tel: 0577288967; 3472220188<br>     Orari: Lunedì: 15:00-18:00; Martedì: 09:00-12:00; Mercoledì: 15:00-18:00; Giovedì: 15:00-18:00; Venerdì: 09:00-12:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_0eedea13ef207d3c4d1f7019afc49772.setContent(html_52a52b09e9de3b231fbe83a9215bf3e4);
+            
+        
+
+        marker_5010440f08cd61807e5f014bd6727fe1.bindPopup(popup_0eedea13ef207d3c4d1f7019afc49772)
+        ;
+
+        
+    
+    
+            var marker_ca4b98b78399a59609095e5b501e9a83 = L.marker(
+                [42.55308355361512, 12.660488825170754],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_b25306f75e7235bf82dd357fcda47f3a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ca4b98b78399a59609095e5b501e9a83.setIcon(icon_b25306f75e7235bf82dd357fcda47f3a);
+        
+    
+        var popup_05a59c345f0e6c24ad7ca8c8d497c087 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1c86392a227b0e4cc3fc9bff8ffa1bd1 = $(`<div id="html_1c86392a227b0e4cc3fc9bff8ffa1bd1" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Liberetutte</b><br>     Via Campomicciolo, 1<br>     Terni, Terni<br>     Tel: 3342024605<br>     Orari: Lunedì: 09:00-18:00; Martedì: 09:00-18:00; Mercoledì: 09:00-18:00; Giovedì: 09:00-18:00; Venerdì: 09:00-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_05a59c345f0e6c24ad7ca8c8d497c087.setContent(html_1c86392a227b0e4cc3fc9bff8ffa1bd1);
+            
+        
+
+        marker_ca4b98b78399a59609095e5b501e9a83.bindPopup(popup_05a59c345f0e6c24ad7ca8c8d497c087)
+        ;
+
+        
+    
+    
+            var marker_7ba92f72b8e92ebe38a769413400fa43 = L.marker(
+                [45.7370456883875, 7.324891803281769],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_0889eb9b4d7ce2198666c24b912d5685 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7ba92f72b8e92ebe38a769413400fa43.setIcon(icon_0889eb9b4d7ce2198666c24b912d5685);
+        
+    
+        var popup_34a9ed0114f96b4b568aba682de1f631 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fb5c47fb5250a7c835ded9b72307ec2f = $(`<div id="html_fb5c47fb5250a7c835ded9b72307ec2f" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza donne contro la violenza</b><br>     Via Torino, 18<br>     Aosta, Valle d’Aosta/Vallée d’Aoste<br>     Tel: 0165238750; 3440789888<br>     Orari: Lunedì: 08:00-20:00; Martedì: 08:00-20:00; Mercoledì: 08:00-20:00; Giovedì: 08:00-20:00; Venerdì: 08:00-20:00; Sabato: 08:00-20:00; Domenica: 08:00-20:00<br>     </div>`)[0];
+                popup_34a9ed0114f96b4b568aba682de1f631.setContent(html_fb5c47fb5250a7c835ded9b72307ec2f);
+            
+        
+
+        marker_7ba92f72b8e92ebe38a769413400fa43.bindPopup(popup_34a9ed0114f96b4b568aba682de1f631)
+        ;
+
+        
+    
+    
+            var marker_1908b42abf6858722c0e9c9224b1919f = L.marker(
+                [42.6577291023153, 13.700629168369742],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_58319362e82ba686c53c777ec3d6aa27 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1908b42abf6858722c0e9c9224b1919f.setIcon(icon_58319362e82ba686c53c777ec3d6aa27);
+        
+    
+        var popup_c4aff4813f454044788e203540cc93ae = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ac2c4d9e7ff3e8276240bba8ab5410dd = $(`<div id="html_ac2c4d9e7ff3e8276240bba8ab5410dd" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza La Fenice</b><br>     Via Trento e Trieste, 8<br>     Teramo, Martinsicuro, Pineto, Isola del Gran Sasso, Teramo<br>     Tel: 0861029009; 800174207<br>     Orari: Lunedì: chiuso; Martedì: 11:00-13:00; Mercoledì: 15:30-18:30; Giovedì: 15:00-18:00; Venerdì: 16:00-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_c4aff4813f454044788e203540cc93ae.setContent(html_ac2c4d9e7ff3e8276240bba8ab5410dd);
+            
+        
+
+        marker_1908b42abf6858722c0e9c9224b1919f.bindPopup(popup_c4aff4813f454044788e203540cc93ae)
+        ;
+
+        
+    
+    
+            var marker_93015ad328be45d25cf6e4dde14048ab = L.marker(
+                [40.63160046324781, 15.79934870628883],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_81160a753d87bac2e0d31025c8516942 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_93015ad328be45d25cf6e4dde14048ab.setIcon(icon_81160a753d87bac2e0d31025c8516942);
+        
+    
+        var popup_cd3c3c3ef00d4ac125e6135b802a990e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f1826f925da1d6b92ccb6bcfe3e4e48c = $(`<div id="html_f1826f925da1d6b92ccb6bcfe3e4e48c" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Telefono Donna</b><br>     Via dei Ligustri,32<br>     Potenza, Potenza<br>     Tel: 097155551; 360437962<br>     Orari: Lunedì: 09:00-14:00/16:00-19:00; Martedì: 09:00-14:00/16:00-19:00; Mercoledì: 09:00-14:00/16:00-19:00; Giovedì: 09:00-14:00/16:00-19:00; Venerdì: 09:00-14:00/16:00-19:00; Sabato: 09:00-14:00; Domenica: chiuso<br>     </div>`)[0];
+                popup_cd3c3c3ef00d4ac125e6135b802a990e.setContent(html_f1826f925da1d6b92ccb6bcfe3e4e48c);
+            
+        
+
+        marker_93015ad328be45d25cf6e4dde14048ab.bindPopup(popup_cd3c3c3ef00d4ac125e6135b802a990e)
+        ;
+
+        
+    
+    
+            var marker_83f16458c8e87a045a3dac032bb6ae57 = L.marker(
+                [44.0618998, 12.4481194],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_886390e94d925f98cf9d9b0484af4e3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_83f16458c8e87a045a3dac032bb6ae57.setIcon(icon_886390e94d925f98cf9d9b0484af4e3e);
+        
+    
+        var popup_c00217d786241f27cd1431d55fa584d1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_17ccb70c4d26e2b8a35659dc9508047f = $(`<div id="html_17ccb70c4d26e2b8a35659dc9508047f" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Marielle</b><br>     Via Dante di Nanni 1 /d<br>     Santarcangelo, Rimini<br>     Tel: 3465016665<br>     Orari: Lunedì: 09:00-12:00/15:00-19:00; Martedì: 09:00-12:00/15:00-19:00; Mercoledì: 09:00-12:00/15:00-19:00; Giovedì: 09:00-12:00/15:00-19:00; Venerdì: 09:00-12:00/15:00-19:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_c00217d786241f27cd1431d55fa584d1.setContent(html_17ccb70c4d26e2b8a35659dc9508047f);
+            
+        
+
+        marker_83f16458c8e87a045a3dac032bb6ae57.bindPopup(popup_c00217d786241f27cd1431d55fa584d1)
+        ;
+
+        
+    
+    
+            var marker_c2bd714058295924586064b280ba2be9 = L.marker(
+                [46.0666141, 13.2437927],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_fc596cd2674e77cc0b5cdb420ee856d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c2bd714058295924586064b280ba2be9.setIcon(icon_fc596cd2674e77cc0b5cdb420ee856d5);
+        
+    
+        var popup_c08d2e39d90b58b5440ec0c67de9aa9b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_031076fa7f51740f56f1bb7ad9ef5fbd = $(`<div id="html_031076fa7f51740f56f1bb7ad9ef5fbd" style="width: 100.0%; height: 100.0%;">     <b>Zero tolerance contro la violenza sulle donne</b><br>     Via San Valentino, 20<br>     Udine, Udine<br>     Tel: 800531135; 04321272077; 3804699483<br>     Orari: Lunedì: 08:30-16:00; Martedì: 08:30-16:00; Mercoledì: 08:30-16:00; Giovedì: 08:30-16:00; Venerdì: 08:30-16:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_c08d2e39d90b58b5440ec0c67de9aa9b.setContent(html_031076fa7f51740f56f1bb7ad9ef5fbd);
+            
+        
+
+        marker_c2bd714058295924586064b280ba2be9.bindPopup(popup_c08d2e39d90b58b5440ec0c67de9aa9b)
+        ;
+
+        
+    
+    
+            var marker_26447a0f3b4f8750be0c55e7515c01fe = L.marker(
+                [42.42058694831737, 12.105363428337698],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_d9afc96cc97101aba65c9b30ae6cdadb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_26447a0f3b4f8750be0c55e7515c01fe.setIcon(icon_d9afc96cc97101aba65c9b30ae6cdadb);
+        
+    
+        var popup_97dedd45b372de6de03c03e948daa620 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dcd313e4d5d86aa1ea46e2a20b81809d = $(`<div id="html_dcd313e4d5d86aa1ea46e2a20b81809d" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Penelope</b><br>     Via della Pettinara, 4<br>     Viterbo, Viterbo<br>     Tel: 07611563229; 3926473807<br>     Orari: Lunedì: 15:00-19:00; Martedì: 09:00-13:00; Mercoledì: 15:00-19:00; Giovedì: 09:00-13:00; Venerdì: 15:00-19:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_97dedd45b372de6de03c03e948daa620.setContent(html_dcd313e4d5d86aa1ea46e2a20b81809d);
+            
+        
+
+        marker_26447a0f3b4f8750be0c55e7515c01fe.bindPopup(popup_97dedd45b372de6de03c03e948daa620)
+        ;
+
+        
+    
+    
+            var marker_2c698af6fbcdf8247e48fcc3b2d83c91 = L.marker(
+                [44.3097204, 8.4760687],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_524cdd375dbd83f13ba5d312eb8607a2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2c698af6fbcdf8247e48fcc3b2d83c91.setIcon(icon_524cdd375dbd83f13ba5d312eb8607a2);
+        
+    
+        var popup_b8636ffafb766bdde1130e9819314b33 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3683b896f59c2e7d1aeff30fe9fbcd4c = $(`<div id="html_3683b896f59c2e7d1aeff30fe9fbcd4c" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Telefono Donna</b><br>     Via Sormano, 12<br>     Savona, Savona<br>     Tel: 0198313399; 3276228267<br>     Orari: Lunedì: 09:30-12:30/15:30-18:00; Martedì: 09:30-12:30/15:30-18:00; Mercoledì: 09:30-12:30/15:30-18:00; Giovedì: 09:30-12:30/15:30-18:00; Venerdì: 09:30-12:30/15:30-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_b8636ffafb766bdde1130e9819314b33.setContent(html_3683b896f59c2e7d1aeff30fe9fbcd4c);
+            
+        
+
+        marker_2c698af6fbcdf8247e48fcc3b2d83c91.bindPopup(popup_b8636ffafb766bdde1130e9819314b33)
+        ;
+
+        
+    
+    
+            var marker_35ba92f814da9c633b49555f80bfe2aa = L.marker(
+                [41.58797955, 14.22584503945454],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_07f9dae7c9f0ab1dfae774f9695869f4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_35ba92f814da9c633b49555f80bfe2aa.setIcon(icon_07f9dae7c9f0ab1dfae774f9695869f4);
+        
+    
+        var popup_142690c5d5a15f4725c46f78bb33526b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5a68d705d1f7773820d6e424394e2e2c = $(`<div id="html_5a68d705d1f7773820d6e424394e2e2c" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza BeFree Molise di Isernia</b><br>     Piazza Marconi, 1<br>     Isernia, Isernia<br>     Tel: 3894451838<br>     Orari: Lunedì: 09:00-11:00; Martedì: 10:00-13:00; Mercoledì: 10:00-13:00; Giovedì: 15:00-17:00; Venerdì: 09:00-12:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_142690c5d5a15f4725c46f78bb33526b.setContent(html_5a68d705d1f7773820d6e424394e2e2c);
+            
+        
+
+        marker_35ba92f814da9c633b49555f80bfe2aa.bindPopup(popup_142690c5d5a15f4725c46f78bb33526b)
+        ;
+
+        
+    
+    
+            var marker_2a48ed674acf2c7ba05577048249e198 = L.marker(
+                [45.323791, 8.4209986],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_c0a6fde1e7887512b306827a5071b0c3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2a48ed674acf2c7ba05577048249e198.setIcon(icon_c0a6fde1e7887512b306827a5071b0c3);
+        
+    
+        var popup_257db87742eecb590bed971c94a4cbc5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_de0155dbf49c0b7c3eb2dd445bec99b6 = $(`<div id="html_de0155dbf49c0b7c3eb2dd445bec99b6" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Vercellese EOS</b><br>     Via Fratelli Garrone,12<br>     Vercelli, Vercelli<br>     Tel: 3343113955<br>     Orari: Lunedì: 10:00-14:00; Martedì: 12:00-16:00; Mercoledì: 10:00-14:00; Giovedì: 12:00-16:00; Venerdì: 10:00-14:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_257db87742eecb590bed971c94a4cbc5.setContent(html_de0155dbf49c0b7c3eb2dd445bec99b6);
+            
+        
+
+        marker_2a48ed674acf2c7ba05577048249e198.bindPopup(popup_257db87742eecb590bed971c94a4cbc5)
+        ;
+
+        
+    
+    
+            var marker_936c2069ca729872309f94a93a00304e = L.marker(
+                [43.3153415, 11.3407951],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_c3e5a22b15ca26a9ca640275db35ab78 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_936c2069ca729872309f94a93a00304e.setIcon(icon_c3e5a22b15ca26a9ca640275db35ab78);
+        
+    
+        var popup_d6f72e49025aea2ef1049d2b761d4050 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_14861713edc688967ebae45ad60aacb9 = $(`<div id="html_14861713edc688967ebae45ad60aacb9" style="width: 100.0%; height: 100.0%;">     <b>Associazione Donna chiama Donna</b><br>     Via Roma, 75<br>     Siena, Siena<br>     Tel: 0577288967; 3472220188<br>     Orari: Lunedì: 15:00-18:00; Martedì: 09:00-12:00; Mercoledì: 15:00-18:00; Giovedì: 15:00-18:00; Venerdì: 09:00-12:00; Sabato: chiuso; Domenica: chiuso<br>     </div>`)[0];
+                popup_d6f72e49025aea2ef1049d2b761d4050.setContent(html_14861713edc688967ebae45ad60aacb9);
+            
+        
+
+        marker_936c2069ca729872309f94a93a00304e.bindPopup(popup_d6f72e49025aea2ef1049d2b761d4050)
+        ;
+
+        
+    
+    
+            var marker_4fabb56810a85a8d7ed76357d0629be7 = L.marker(
+                [42.55308355361512, 12.660488825170754],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_49f04cc809282db967eca5f73e076842 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4fabb56810a85a8d7ed76357d0629be7.setIcon(icon_49f04cc809282db967eca5f73e076842);
+        
+    
+        var popup_60fc720fdfdf148a9e71d371a7761ca4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_99107fa2062f55041068c984ee661773 = $(`<div id="html_99107fa2062f55041068c984ee661773" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza Liberetutte</b><br>     Via Campomicciolo, 1<br>     Terni, Terni<br>     Tel: 3342024605<br>     Orari: Lunedì: 09:00-18:00; Martedì: 09:00-18:00; Mercoledì: 09:00-18:00; Giovedì: 09:00-18:00; Venerdì: 09:00-18:00; Sabato: h24; Domenica: h24<br>     </div>`)[0];
+                popup_60fc720fdfdf148a9e71d371a7761ca4.setContent(html_99107fa2062f55041068c984ee661773);
+            
+        
+
+        marker_4fabb56810a85a8d7ed76357d0629be7.bindPopup(popup_60fc720fdfdf148a9e71d371a7761ca4)
+        ;
+
+        
+    
+    
+            var marker_e174a435c99b1d3de21c002a83d5f77b = L.marker(
+                [45.7370456883875, 7.324891803281769],
+                {}
+            ).addTo(map_8aa8c69a15f3c962d6180ca75695cce4);
+        
+    
+            var icon_ecd1cf0ccbdf007e0df8d3d94723d2bd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e174a435c99b1d3de21c002a83d5f77b.setIcon(icon_ecd1cf0ccbdf007e0df8d3d94723d2bd);
+        
+    
+        var popup_7907f43262411092f5750f15d3f6f531 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6d6d21ec62cc6ecfdad430f0274b00b5 = $(`<div id="html_6d6d21ec62cc6ecfdad430f0274b00b5" style="width: 100.0%; height: 100.0%;">     <b>Antiviolenza donne contro la violenza</b><br>     Via Torino, 18<br>     Aosta, Valle d’Aosta/Vallée d’Aoste<br>     Tel: 0165238750; 3440789888<br>     Orari: Lunedì: 08:00-20:00; Martedì: 08:00-20:00; Mercoledì: 08:00-20:00; Giovedì: 08:00-20:00; Venerdì: 08:00-20:00; Sabato: 08:00-20:00; Domenica: 08:00-20:00<br>     </div>`)[0];
+                popup_7907f43262411092f5750f15d3f6f531.setContent(html_6d6d21ec62cc6ecfdad430f0274b00b5);
+            
+        
+
+        marker_e174a435c99b1d3de21c002a83d5f77b.bindPopup(popup_7907f43262411092f5750f15d3f6f531)
+        ;
+
+        
+    
+</script>
+</html>
