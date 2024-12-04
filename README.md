@@ -1,4 +1,4 @@
-Copy# 1522 Calls Analysis
+# 1522 Calls Analysis
 
 Analysis and visualization of Italy's anti-violence hotline (1522) call data from 2013 to 2024. Data source: [ISTAT](hhttps://www.istat.it/statistiche-per-temi/focus/violenza-sulle-donne/la-fuoriuscita-dalla-violenza/numero-di-pubblica-utilita-1522/).
 
