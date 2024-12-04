@@ -20,7 +20,7 @@ Analysis and visualization of Italy's anti-violence hotline (1522) call data fro
 - `calls_by_year.csv`: total of calls by year
 - `calls_by_month.csv`: a pivoted file with week numbers as columns
 
-### Interactive Visualization
+### Interactive Visualization [LINK](https://marcodallastella.github.io/chiamate-1522/)
 React/D3.js application showing animated weekly calls on Italy's map:
 - Animated dots represent call volume by province
 - Timeline shows progression from 2013-2024
