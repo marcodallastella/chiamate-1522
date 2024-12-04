@@ -37,7 +37,13 @@ function CallsMap() {
         },
         WEEKS_TO_KEEP: 3
     };
-
+    const sumCalls = (weekData) => {
+        if (!weekData) return 0;
+        const byProvince = d3.group(weekData, d => d.provincia);
+        return Array.from(byProvince.values())
+            .reduce((total, provinceCalls) =>
+                total + d3.sum(provinceCalls, d => Number(d.calls)), 0);
+    };
     const startYear = 2023;
     const [currentData, setCurrentData] = React.useState([]);
     const [currentWeek, setCurrentWeek] = React.useState(0);
@@ -85,17 +91,17 @@ function CallsMap() {
     // Initialize map 
     React.useEffect(() => {
         if (!italyGeoData || !svgRef.current || mapInitialized.current) return;
-    
+
         const svg = d3.select(svgRef.current);
-        
+
         // Create map group first (so it's behind)
         svg.append('g')
             .attr('class', 'italy-map');
-            
+
         // Create dots group second (so it's on top)
         svg.append('g')
             .attr('class', 'dots-container');
-    
+
         mapInitialized.current = true;
     }, [italyGeoData]);
 
@@ -144,57 +150,57 @@ function CallsMap() {
         });
     }, [startAnimation]);
 
-// Update dots
-React.useEffect(() => {
-    if (!currentData.length || !italyGeoData || !mapInitialized.current) return;
+    // Update dots
+    React.useEffect(() => {
+        if (!currentData.length || !italyGeoData || !mapInitialized.current) return;
 
-    const svg = d3.select(svgRef.current);
-    const width = svgRef.current.clientWidth;
-    const height = svgRef.current.clientHeight;
-    const isLastWeek = currentWeek === currentData.length - 1;
+        const svg = d3.select(svgRef.current);
+        const width = svgRef.current.clientWidth;
+        const height = svgRef.current.clientHeight;
+        const isLastWeek = currentWeek === currentData.length - 1;
 
-    const projection = getProjection(width, height);
+        const projection = getProjection(width, height);
 
-    const weekData = currentData[currentWeek] && currentData[currentWeek][1] ? currentData[currentWeek][1] : [];
+        const weekData = currentData[currentWeek] && currentData[currentWeek][1] ? currentData[currentWeek][1] : [];
 
-    const sizeScale = d3.scaleLinear()
-        .domain([0, d3.max(weekData, d => +d.calls)])
-        .range([ANIMATION_CONFIG.DOT_SIZE.MIN, ANIMATION_CONFIG.DOT_SIZE.MAX]);
+        const sizeScale = d3.scaleLinear()
+            .domain([0, d3.max(weekData, d => +d.calls)])
+            .range([ANIMATION_CONFIG.DOT_SIZE.MIN, ANIMATION_CONFIG.DOT_SIZE.MAX]);
 
-    const weekGroup = svg.select('.dots-container')
-        .append('g')
-        .attr('class', `week-${currentWeek}`);
+        const weekGroup = svg.select('.dots-container')
+            .append('g')
+            .attr('class', `week-${currentWeek}`);
 
-    weekGroup.selectAll('circle')
-        .data(weekData)
-        .enter()
-        .append('circle')
-        .attr('cx', d => projection([+d.longitude, +d.latitude])[0])
-        .attr('cy', d => projection([+d.longitude, +d.latitude])[1])
-        .attr('r', 0)
-        .attr('fill', `rgba(223, 32, 32, ${ANIMATION_CONFIG.DOT_OPACITY.INITIAL})`)
-        .transition()
-        .duration(ANIMATION_CONFIG.GROW_DURATION)
-        .style('opacity', ANIMATION_CONFIG.DOT_OPACITY.PEAK)
-        .attr('r', d => sizeScale(+d.calls))
-        .transition()
-        .duration(ANIMATION_CONFIG.VISIBLE_DURATION)
-        .style('opacity', ANIMATION_CONFIG.DOT_OPACITY.PEAK)
-        .transition()
-        .duration(isLastWeek ? 0 : ANIMATION_CONFIG.FADE_DURATION) // Skip fade if last week
-        .style('opacity', isLastWeek ? ANIMATION_CONFIG.DOT_OPACITY.PEAK : ANIMATION_CONFIG.DOT_OPACITY.END)
-        .end()
-        .then(() => {
-            if (!isLastWeek) {
-                weekGroup.remove();
-            }
-        });
+        weekGroup.selectAll('circle')
+            .data(weekData)
+            .enter()
+            .append('circle')
+            .attr('cx', d => projection([+d.longitude, +d.latitude])[0])
+            .attr('cy', d => projection([+d.longitude, +d.latitude])[1])
+            .attr('r', 0)
+            .attr('fill', `rgba(223, 32, 32, ${ANIMATION_CONFIG.DOT_OPACITY.INITIAL})`)
+            .transition()
+            .duration(ANIMATION_CONFIG.GROW_DURATION)
+            .style('opacity', ANIMATION_CONFIG.DOT_OPACITY.PEAK)
+            .attr('r', d => sizeScale(+d.calls))
+            .transition()
+            .duration(ANIMATION_CONFIG.VISIBLE_DURATION)
+            .style('opacity', ANIMATION_CONFIG.DOT_OPACITY.PEAK)
+            .transition()
+            .duration(isLastWeek ? 0 : ANIMATION_CONFIG.FADE_DURATION) // Skip fade if last week
+            .style('opacity', isLastWeek ? ANIMATION_CONFIG.DOT_OPACITY.PEAK : ANIMATION_CONFIG.DOT_OPACITY.END)
+            .end()
+            .then(() => {
+                if (!isLastWeek) {
+                    weekGroup.remove();
+                }
+            });
 
-    const oldWeek = currentWeek - ANIMATION_CONFIG.WEEKS_TO_KEEP;
-    if (oldWeek >= 0 && !isLastWeek) {
-        svg.select(`.week-${oldWeek}`).remove();
-    }
-}, [currentData, currentWeek, italyGeoData, getProjection]);
+        const oldWeek = currentWeek - ANIMATION_CONFIG.WEEKS_TO_KEEP;
+        if (oldWeek >= 0 && !isLastWeek) {
+            svg.select(`.week-${oldWeek}`).remove();
+        }
+    }, [currentData, currentWeek, italyGeoData, getProjection]);
 
     return (
         <div className="map-container">
@@ -209,11 +215,11 @@ React.useEffect(() => {
                         </div>
                     </React.Fragment>
                 ) : ''}
-                <p className="calls-count"> {
-                    currentData[currentWeek] && currentData[currentWeek][1]
-                        ? currentData[currentWeek][1].reduce((sum, d) => sum + Number(d.calls), 0)
-                        : 0
-                }</p>
+                <p className="calls-count">
+                    {currentData[currentWeek] && currentData[currentWeek][1]
+                        ? sumCalls(currentData[currentWeek][1])
+                        : 0}
+                </p>
             </div>
             <svg ref={svgRef} width={svgWidth} height={svgHeight}>
             </svg>
